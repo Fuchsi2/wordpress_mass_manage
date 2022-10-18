@@ -1,0 +1,44 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: <#MYSQL_PASSWORD>
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - ./db:/var/lib/mysql
+    # networks:
+      # - intern
+
+  wordpress:
+    image: wordpress
+    restart: unless-stopped
+    depends_on:
+      - db
+    expose:
+      - 80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: <#MYSQL_PASSWORD>
+      WORDPRESS_DB_NAME: wordpress
+    volumes:
+      - ./wordpress:/var/www/html
+    networks:
+      # - intern
+      - default
+      - traefik_proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.http.routers.<#FULL_STACK_NAME>-secure.entrypoints=https"
+      - "traefik.http.routers.<#FULL_STACK_NAME>-secure.rule=Host(`<#TRAEFIK_HOST>`)" 
+
+networks:
+  # intern:
+  traefik_proxy:
+    external: true

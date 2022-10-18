@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+    
+  traefik:
+    image: traefik:latest
+    container_name: traefik
+    restart: always
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data/traefik.yml:/traefik.yml:ro
+      - ./data/configurations:/configurations
+      - ./data/acme.json:/acme.json
+    environment:
+      TZ: Europe/Berlin
+    networks:
+      - proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik_proxy"
+      - "traefik.http.routers.traefik-secure.entrypoints=https"
+      - "traefik.http.routers.traefik-secure.rule=Host(`traefik.docker-test.net`)"
+      - "traefik.http.routers.traefik-secure.service=api@internal"
+      - "traefik.http.routers.traefik-secure.middlewares=user-auth@file"
+
+networks:
+  proxy:
