@@ -8,7 +8,12 @@ on:
     tags:
       - "wordpress_mass_manage/v*"
   workflow_dispatch:
-      
+
+defaults:
+  run:
+    working-directory: wordpress-mass-manage
+
+
 jobs:
   build:
 
@@ -21,7 +26,7 @@ jobs:
       with:
         node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
-    - run: cd wordpress-mass-manage
+    # - run: cd wordpress-mass-manage
     - run: npm install -g pkg
     - run: npm run build
     
