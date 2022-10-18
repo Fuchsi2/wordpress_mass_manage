@@ -28,6 +28,7 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     # - run: cd wordpress-mass-manage
     - run: npm install -g pkg
+    - run: npm i
     - run: npm run build
     
     - name: create release
