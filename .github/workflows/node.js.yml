@@ -4,9 +4,9 @@
 name: Node.js pkg build
 
 on:
-  push:
-    tags:
-      - "wordpress_mass_manage/v*"
+  # push:
+  #   tags:
+  #     - "wordpress_mass_manage/v*"
   workflow_dispatch:
 
 defaults:
@@ -26,7 +26,6 @@ jobs:
       with:
         node-version: '16.x'
         registry-url: 'https://registry.npmjs.org'
-    # - run: cd wordpress-mass-manage
     - run: npm install -g pkg
     - run: npm i
     - run: npm run build
@@ -37,8 +36,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: ${{ github.ref }}
+        # tag_name: 'v0.0.0'
+        release_name: 'v0.0.0'
         draft: true
 
     - name: upload files to release
