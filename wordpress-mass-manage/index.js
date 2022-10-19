@@ -6,11 +6,13 @@ const deploy = require('./commands/deploy')
 const stop = require('./commands/stop')
 const start = require('./commands/start')
 const trash = require('./commands/trash')
+const untrash = require('./commands/untrash')
 
 
 program
     .command('list')
     .description('List all the Wordpress Stacks')
+    .option('-t, --trash')
     .action(list);
 
 program
@@ -40,6 +42,11 @@ program
     .command('trash <full_stack_name>')
     .description('move a stack to trash')
     .action(trash);
+
+program
+    .command('untrash <full_stack_name>')
+    .description('restore a stack from trash')
+    .action(untrash);
 
 program.parse()
 

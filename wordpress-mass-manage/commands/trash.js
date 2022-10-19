@@ -12,7 +12,7 @@ function trash(stack_name) {
         if (created_stack == undefined) {
             fs.renameSync("./../wordpress/"+stack_name,"./../wordpress/_trash/"+stack_name)
             console.log("")
-            console.log(chalk.green("successfully moved to trash"))
+            console.log(chalk.green("stack successfully moved to trash"))
         }else {
             console.log("")
             console.log(chalk.red("stack is not \"down (created/stopped)\""))
