@@ -11,6 +11,7 @@ const untrash = require('./commands/untrash')
 
 program
     .command('list')
+    .alias('ls')
     .description('List all the Wordpress Stacks')
     .option('-t, --trash')
     .action(list);
@@ -47,6 +48,14 @@ program
     .command('untrash <full_stack_name>')
     .description('restore a stack from trash')
     .action(untrash);
+
+// program
+//     .command('conf')
+//     .description('debug')
+//     .action(()=> {
+//         const conf = require('./wmm-conf.json')
+//         console.log(JSON.stringify(conf))
+//     })
 
 program.parse()
 

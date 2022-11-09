@@ -2,10 +2,11 @@ const { execSync } = require('child_process')
 const fs = require('fs')
 const chalk = require('chalk')
 
+const conf = require('./../wmm-conf.json')
 
 function list (options) {
     if (options.trash) {
-        var stacks_available = fs.readdirSync('./../wordpress/_trash').filter(dir=>{return dir.startsWith("wp_")})
+        var stacks_available = fs.readdirSync(conf.cwd + 'wordpress/_trash').filter(dir=>{return dir.startsWith("wp_")})
 
         console.log("")
         
@@ -19,7 +20,7 @@ function list (options) {
         }
     }else {
     
-        var stacks_available = fs.readdirSync('./../wordpress').filter(dir=>{return dir.startsWith("wp_")})
+        var stacks_available = fs.readdirSync(conf.cwd + 'wordpress').filter(dir=>{return dir.startsWith("wp_")})
         var created_stacks = JSON.parse(execSync("docker-compose ls -a --format json").toString()).filter(stack=>{return stack.Name.startsWith("wp_")})
 
         var stacks = []
