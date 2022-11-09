@@ -1,0 +1,23 @@
+FROM node:16
+
+# run build
+RUN npm install -g pkg
+RUN mkdir /install
+WORKDIR /install
+ADD ./wordpress-mass-manage /install/
+RUN npm i
+
+# run workspace preparation
+RUN mkdir /workspace
+ADD ./traefik/ /workspace_/traefik
+ADD ./wordpress/ /workspace_/wordpress
+
+COPY ./installer/run.sh .
+
+ENV wmm_domain docker-test.net
+
+CMD [ "bash",  "./run.sh" ]
+
+# docker build . -f installer/dockerfile -t wmm-install:latest --no-cache
+
+# docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net wmm-install:latest
