@@ -18,7 +18,9 @@
 ## usage
 
 ```
-Usage: index [options] [command]
+Usage: wmm [options] [command]
+
+easily manage wordpress stacks
 
 Options:
   -h, --help                             display help for command

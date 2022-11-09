@@ -8,6 +8,9 @@ const start = require('./commands/start')
 const trash = require('./commands/trash')
 const untrash = require('./commands/untrash')
 
+program
+    .name('wmm')
+    .description('easily manage wordpress stacks')
 
 program
     .command('list')
