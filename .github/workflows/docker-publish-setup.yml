@@ -20,7 +20,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: fuchsi2/wmm-setup #${{ github.repository }}
+  IMAGE_NAME: fuchsi2/wmm_setup #${{ github.repository }}
 
 
 jobs:
