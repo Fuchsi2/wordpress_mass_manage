@@ -1,3 +1,4 @@
 node_modules
 wp_*
-build
+wordpress-mass-manage/build/*
+!wordpress-mass-manage/build/.gitkeep
