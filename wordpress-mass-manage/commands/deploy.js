@@ -20,7 +20,7 @@ function deploy(stack_name, stack_subdomain) {
         .replace(/<#TRAEFIK_HOST>/g, stack_subdomain + "." + conf.domain);
 
     fs.writeFileSync(stack_dir + "/docker-compose.yml",template )
-    execSync("docker-compose up -d",{cwd:stack_dir})
+    console.log(execSync("docker-compose up -d",{cwd:stack_dir}).toString())
     console.log("")
     // console.log(stack_subdomain)
     console.log(chalk.green("Deploy successful"))
