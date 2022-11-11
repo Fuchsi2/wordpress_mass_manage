@@ -33,6 +33,9 @@
 5. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to your hosts file. (keep in mind you have to add every subdomain to it you want to use)
 6. executable to use: ./wordpress-mass-manage-macos
 
+### updating the setup
+1. docker pull ghcr.io/fuchsi2/wmm_setup:main
+
 ## usage
 
 ```
