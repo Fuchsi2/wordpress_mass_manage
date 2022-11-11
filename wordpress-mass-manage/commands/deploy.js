@@ -10,6 +10,7 @@ function rand_str(length) {
 }
 
 function deploy(stack_name, stack_subdomain) {
+    stack_subdomain = stack_subdomain.toLocaleLowerCase()
     stack_name = stack_name.toLocaleLowerCase()
     var full_stack_name = stack_name + "_" + rand_str(4).padStart(4,"0")
     var stack_dir = conf.cwd + "wordpress/wp_" + full_stack_name
