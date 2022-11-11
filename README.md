@@ -2,7 +2,7 @@
  easy mass deployment tool for Wordpress behind traefik
 
 
-# setup 
+# Setup 
 
 ## Requirements
 - docker or docker desktop
