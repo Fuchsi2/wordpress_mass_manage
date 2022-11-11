@@ -34,7 +34,7 @@
 6. executable to use: ./wordpress-mass-manage-macos
 
 ### updating the setup
-1. docker pull ghcr.io/fuchsi2/wmm_setup:main
+1. `docker pull ghcr.io/fuchsi2/wmm_setup:main`
 
 ## usage
 
