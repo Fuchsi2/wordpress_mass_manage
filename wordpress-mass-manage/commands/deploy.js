@@ -20,16 +20,17 @@ function deploy(stack_name, stack_subdomain) {
         .replace(/<#TRAEFIK_HOST>/g, stack_subdomain + "." + conf.domain);
 
     if (process.platform == "linux" || process.platform == "darwin"
-     && execSync("docker image ls | grep -E 'mysql.*5\.7|wordpress'",{cwd:stack_dir}).toString().split("\n").length < 2) {
+     && !execSync("docker image ls | grep -E 'mysql.*5\.7|wordpress'",{cwd:stack_dir}).toString().split("\n").length < 2) {
         console.log(chalk.cyan("Pulling images..."))
         execSync("docker-compose pull'",{cwd:stack_dir})
         console.log(chalk.green("All images pulled"))
     } else if (process.platform == "win32"
-     && execSync("docker image ls | findstr /R \"mysql.*5\.7\"",{cwd:stack_dir}).toString().includes("mysql")
-     && execSync("docker image ls | findstr /R \"wordpress\"",{cwd:stack_dir}).toString().includes("wordpress")) {
+     && !execSync("docker image ls | findstr /R \"mysql.*5\.7\"",{cwd:stack_dir}).toString().includes("mysql")
+     && !execSync("docker image ls | findstr /R \"wordpress\"",{cwd:stack_dir}).toString().includes("wordpress")) {
+
         console.log(chalk.cyan("Pulling images..."))
-        execSync("docker pull wordpress'",{cwd:stack_dir})
-        execSync("docker pull mysql:5.7'",{cwd:stack_dir})
+        execSync("docker pull wordpress",{cwd:stack_dir})
+        execSync("docker pull mysql:5.7",{cwd:stack_dir})
         console.log(chalk.green("All images pulled"))
     }
 
