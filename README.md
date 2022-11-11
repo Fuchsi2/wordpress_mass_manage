@@ -4,16 +4,34 @@
 
 # setup 
 
-## Requirements:
+## Requirements
 - docker or docker desktop
 - docker-compose
 
-## setup:
-1. run and replace docker-test.net with your own domain `docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main`
+## setup
+### Linux (x86_64)
+1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) `docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main`
 2. change directory into wordpress-mass-manage `cd wordpress-mass-manage/traefik` 
 3. start traefik `docker-compose up -d`
 4. move back `cd ..`
-5. (testing only) add docker-test.net, t1.docker-test.net, t2.docker-test.net and traefik.docker-test.net to your hosts file
+5. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to your hosts file. (keep in mind you have to add every subdomain to it you want to use)
+6. executable to use: ./wordpress-mass-manage-linux
+
+### Windows (x86_64)
+1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) `docker run --rm -v &cd&/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main`
+2. change directory into wordpress-mass-manage `cd wordpress-mass-manage/traefik` 
+3. start traefik `docker-compose up -d`
+4. move back `cd ..`
+5. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to your hosts file. (keep in mind you have to add every subdomain to it you want to use)
+6. executable to use: ./wordpress-mass-manage-win.exe
+
+### MAC (x86_64)
+1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) `docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main`
+2. change directory into wordpress-mass-manage `cd wordpress-mass-manage/traefik` 
+3. start traefik `docker-compose up -d`
+4. move back `cd ..`
+5. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to your hosts file. (keep in mind you have to add every subdomain to it you want to use)
+6. executable to use: ./wordpress-mass-manage-macos
 
 ## usage
 
