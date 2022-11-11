@@ -19,6 +19,12 @@ function deploy(stack_name, stack_subdomain) {
         .replace(/<#FULL_STACK_NAME>/g,full_stack_name)
         .replace(/<#TRAEFIK_HOST>/g, stack_subdomain + "." + conf.domain);
 
+    if (execSync("docker image ls | grep -E 'mysql.*5\.7|wordpress'",{cwd:stack_dir}).toString().split("\n").length < 2) {
+        console.log(chalk.cyan("Pulling images..."))
+        execSync("docker-compose pull'",{cwd:stack_dir})
+        console.log(chalk.green("All images pulled"))
+    }
+
     fs.writeFileSync(stack_dir + "/docker-compose.yml",template )
     console.log(execSync("docker-compose up -d",{cwd:stack_dir}).toString())
     console.log("")
