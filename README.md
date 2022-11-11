@@ -18,7 +18,7 @@
  ```
  127.0.0.1 <your-domain.tld>
  127.0.0.1 traefik.<your-domain.tld>
- 127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #repeat this for all subdomains
+ 127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #(for example testing1.docker-test.net) repeat this for all subdomains
  ```
  `CTRL / STRG + X` then `y` then `ENTER` to exit
 6. executable to use: ./wordpress-mass-manage-linux
@@ -32,7 +32,7 @@
  ```
  127.0.0.1 <your-domain.tld>
  127.0.0.1 traefik.<your-domain.tld>
- 127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #repeat this for all subdomains
+ 127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #(for example testing1.docker-test.net) repeat this for all subdomains
  ```
 6. executable to use: ./wordpress-mass-manage-win.exe
 
@@ -45,7 +45,7 @@
  ```
  127.0.0.1 <your-domain.tld>
  127.0.0.1 traefik.<your-domain.tld>
- 127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #repeat this for all subdomains
+ 127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #(for example testing1.docker-test.net) repeat this for all subdomains
  ```
 6. executable to use: ./wordpress-mass-manage-macos
 
