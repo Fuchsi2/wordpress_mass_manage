@@ -28,7 +28,8 @@ function deploy(stack_name, stack_subdomain) {
      && execSync("docker image ls | findstr /R \"mysql.*5\.7\"",{cwd:stack_dir}).toString().startsWith("mysql")
      && execSync("docker image ls | findstr /R \"wordpress\"",{cwd:stack_dir}).toString().startsWith("wordpress")) {
         console.log(chalk.cyan("Pulling images..."))
-        execSync("docker-compose pull'",{cwd:stack_dir})
+        execSync("docker pull wordpress'",{cwd:stack_dir})
+        execSync("docker pull mysql:5.7'",{cwd:stack_dir})
         console.log(chalk.green("All images pulled"))
     }
 
