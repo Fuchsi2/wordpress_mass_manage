@@ -8,8 +8,7 @@
 - docker or docker desktop
 - docker-compose
 
-## setup
-### Linux (x86_64)
+## Linux (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) `docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main`
 2. change directory into wordpress-mass-manage `cd wordpress-mass-manage/traefik` 
 3. start traefik `docker-compose up -d`
@@ -23,7 +22,7 @@
  `CTRL / STRG + X` then `y` then `ENTER` to exit
 6. executable to use: ./wordpress-mass-manage-linux
 
-### Windows (x86_64)
+## Windows (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) `docker run --rm -v &cd&/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main`
 2. change directory into wordpress-mass-manage `cd wordpress-mass-manage/traefik` 
 3. start traefik `docker-compose up -d`
@@ -36,7 +35,7 @@
  ```
 6. executable to use: ./wordpress-mass-manage-win.exe
 
-### MAC (x86_64)
+## MAC (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) `docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main`
 2. change directory into wordpress-mass-manage `cd wordpress-mass-manage/traefik` 
 3. start traefik `docker-compose up -d`
