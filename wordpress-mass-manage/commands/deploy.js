@@ -19,7 +19,14 @@ function deploy(stack_name, stack_subdomain) {
         .replace(/<#FULL_STACK_NAME>/g,full_stack_name)
         .replace(/<#TRAEFIK_HOST>/g, stack_subdomain + "." + conf.domain);
 
-    if (execSync("docker image ls | grep -E 'mysql.*5\.7|wordpress'",{cwd:stack_dir}).toString().split("\n").length < 2) {
+    if (process.platform == "linux" || process.platform == "darwin"
+     && execSync("docker image ls | grep -E 'mysql.*5\.7|wordpress'",{cwd:stack_dir}).toString().split("\n").length < 2) {
+        console.log(chalk.cyan("Pulling images..."))
+        execSync("docker-compose pull'",{cwd:stack_dir})
+        console.log(chalk.green("All images pulled"))
+    } else if (process.platform == "win32"
+     && execSync("docker image ls | findstr /R \"mysql.*5\.7\"",{cwd:stack_dir}).toString().startsWith("mysql")
+     && execSync("docker image ls | findstr /R \"wordpress\"",{cwd:stack_dir}).toString().startsWith("wordpress")) {
         console.log(chalk.cyan("Pulling images..."))
         execSync("docker-compose pull'",{cwd:stack_dir})
         console.log(chalk.green("All images pulled"))
