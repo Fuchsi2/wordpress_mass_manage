@@ -10,6 +10,7 @@ function rand_str(length) {
 }
 
 function deploy(stack_name, stack_subdomain) {
+    stack_name = stack_name.toLocaleLowerCase()
     var full_stack_name = stack_name + "_" + rand_str(4).padStart(4,"0")
     var stack_dir = conf.cwd + "wordpress/wp_" + full_stack_name
     fs.mkdirSync(stack_dir);
@@ -35,7 +36,7 @@ function deploy(stack_name, stack_subdomain) {
     }
 
     fs.writeFileSync(stack_dir + "/docker-compose.yml",template )
-    console.log(execSync("docker-compose up -d",{cwd:stack_dir}).toString())
+    execSync("docker-compose up -d",{cwd:stack_dir})
     console.log("")
     // console.log(stack_subdomain)
     console.log(chalk.green("Deploy successful"))
