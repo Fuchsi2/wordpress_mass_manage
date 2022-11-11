@@ -33,7 +33,7 @@
  127.0.0.1 traefik.<your-domain.tld>
  127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #(for example testing1.docker-test.net) repeat this for all subdomains
  ```
-6. executable to use: ./wordpress-mass-manage-win.exe
+6. executable to use: wordpress-mass-manage-win.exe
 
 ## MAC (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) `docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main`
@@ -48,7 +48,7 @@
  ```
 6. executable to use: ./wordpress-mass-manage-macos
 
-### updating the setup
+## updating the setup (if needed)
 1. `docker pull ghcr.io/fuchsi2/wmm_setup:main`
 
 ## usage
