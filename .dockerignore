@@ -1,3 +1,4 @@
 wordpress/_trash/wp_*
 wordpress/wp_*
 node_modules
+subdomain_list.json

@@ -11,6 +11,7 @@ RUN npm i
 RUN mkdir /workspace
 ADD ./traefik/ /workspace_/traefik
 ADD ./wordpress/ /workspace_/wordpress
+RUN echo "{}" > ./wordpress/subdomain_list.json
 
 COPY ./installer/run.sh .
 

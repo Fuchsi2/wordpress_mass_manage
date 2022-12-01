@@ -2,3 +2,4 @@ node_modules
 wp_*
 wordpress-mass-manage/build/*
 !wordpress-mass-manage/build/.gitkeep
+subdomain_list.json

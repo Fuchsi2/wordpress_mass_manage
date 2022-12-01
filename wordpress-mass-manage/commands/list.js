@@ -5,6 +5,7 @@ const chalk = require('chalk')
 const conf = require('./../wmm-conf.json')
 
 function list (options) {
+    var subdomain_list = JSON.parse(fs.readFileSync(conf.cwd + "/wordpress/subdomain_list.json",{encoding:'utf-8'}))
     if (options.trash) {
         var stacks_available = fs.readdirSync(conf.cwd + 'wordpress/_trash').filter(dir=>{return dir.startsWith("wp_")})
 
@@ -13,10 +14,12 @@ function list (options) {
         if (stacks_available.length == 0) {
             console.log("No stacks in trash:")
         }else {
-            console.log("Stacks in trash")
+            console.log("Stacks in trash | Domain")
             for (const stack of stacks_available) {
-                console.log(stack)
+                var stackdomain = subdomain_list[stack.replace("wp_","")].replace("trash_","") + "." + conf.domain
+                console.log(stack + " | " + stackdomain)
             }
+            
         }
     }else {
     
@@ -74,9 +77,11 @@ function list (options) {
         if (stacks.length == 0) {
             console.log("No stacks running")
         }else {
-            console.log("Stack name: Status")
+            console.log("Stack name: Status | Domain")
+
             for (const stack of stacks) {
-                console.log(stack.name + ": " + stack.status)
+                var stackdomain = subdomain_list[stack.name.replace("wp_","")] + "." + conf.domain
+                console.log(stack.name + ": " + stack.status + " | " + stackdomain)
             }
         }
     }
