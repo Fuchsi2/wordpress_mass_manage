@@ -7,7 +7,8 @@ wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0
 wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-win-x64
 wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-macos-x64
 ls
-mv node-v16.16.0-* PKG_CACHE_PATH
+mv node-v16.16.0-* ~/.pkg-cache/v3.4/
+mv ~/.pkg-cache/v3.4/node-v16.16.0-* ~/.pkg-cache/v3.4/fetched-node-v16.16.0-*
 echo "running build"
 rm /install/build/*
 npm run build
