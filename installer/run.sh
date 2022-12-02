@@ -3,7 +3,7 @@
 echo "{\"cwd\":\"./\",\"domain\":\"$wmm_domain\"}" > /install/wmm-conf.json
 
 echo "setting up pkg"
-mkdir ~/.pkg-cache/v3.4/
+mkdir -p ~/.pkg-cache/v3.4/
 mv /install/node-v16.16.0-* ~/.pkg-cache/v3.4/
 mv ~/.pkg-cache/v3.4/node-v16.16.0-* ~/.pkg-cache/v3.4/fetched-node-v16.16.0-*
 echo "running build"
