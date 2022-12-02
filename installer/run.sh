@@ -8,6 +8,8 @@ mv /install/node-v16.16.0-* ~/.pkg-cache/v3.4/
 mv ~/.pkg-cache/v3.4/node-v16.16.0-linux-x64 ~/.pkg-cache/v3.4/fetched-node-v16.16.0-linux-x64
 mv ~/.pkg-cache/v3.4/node-v16.16.0-win-x64 ~/.pkg-cache/v3.4/fetched-node-v16.16.0-win-x64
 mv ~/.pkg-cache/v3.4/node-v16.16.0-macos-x64 ~/.pkg-cache/v3.4/fetched-node-v16.16.0-macos-x64
+
+tree ~/.pkg-cache
 echo "running build"
 rm /install/build/*
 npm run build
