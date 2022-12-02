@@ -4,9 +4,9 @@ FROM node:16
 RUN npm install -g pkg
 RUN mkdir /install
 WORKDIR /install
-# RUN wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-linux-x64
-# RUN wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-win-x64
-# RUN wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-macos-x64
+RUN wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-linux-x64
+RUN wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-win-x64
+RUN wget -q https://github.com/vercel/pkg-fetch/releases/download/v3.4/node-v16.16.0-macos-x64
 ADD ./wordpress-mass-manage /install/
 RUN npm i
 
