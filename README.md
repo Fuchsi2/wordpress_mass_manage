@@ -115,7 +115,7 @@ traeffik adminpanel: https://traefik.your.domain
 
 traeffik panel User: admin
 
-raeffik panel Password: admin
+traeffik panel Password: admin
 
 change user and password in `traefik/data/configurations/dynamic.yml` under user-auth > basicAuth > users (generate with `https://hostingcanada.org/htpasswd-generator/` (use Bcrypt mode))
 
