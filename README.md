@@ -17,22 +17,34 @@ docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker
 ```
 cd wordpress-mass-manage/traefik
 ```
-3. start traefik 
+3. (Public installation only, OPTIONAL) Uncomment the following lines to generate SSL-Certificates:
+
+`wordpress-mass-manage/wordpress/docker-compose-template.yml`:
+```
+#- "traefik.http.routers.<#FULL_STACK_NAME>-secure.tls=true"
+#- "traefik.http.routers.<#FULL_STACK_NAME>-secure.tls.certresolver=letsencrypt"
+```
+`wordpress-mass-manage/traefik/docker-compose.yml`:
+```
+#- "traefik.http.routers.traefik-secure.tls=true"
+#- "traefik.http.routers.traefik-secure.tls.certresolver=letsencrypt"
+```
+4. start traefik 
 ```
 docker-compose up -d
 ```
-4. move back 
+5. move back 
 ```
 cd ..
 ```
-5. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file  (run `notepad %windir%\system32\drivers\etc\hosts` as admin). (keep in mind you have to add every subdomain to it you want to use)
+6. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file  (run `notepad %windir%\system32\drivers\etc\hosts` as admin). (keep in mind you have to add every subdomain to it you want to use)
  ```
  127.0.0.1 <your-domain.tld>
  127.0.0.1 traefik.<your-domain.tld>
  127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #(for example testing1.docker-test.net) repeat this for all subdomains
  ```
  `CTRL / STRG + X` then `y` then `ENTER` to exit
-6. executable to use: ./wordpress-mass-manage-linux
+7. executable to use: ./wordpress-mass-manage-linux
 
 ## Windows (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) 
@@ -43,21 +55,33 @@ docker run --rm -v &cd&/wordpress-mass-manage/:/workspace -e wmm_domain=docker-t
 ```
 cd wordpress-mass-manage/traefik
 ``` 
-3. start traefik 
+3. (Public installation only, OPTIONAL) Uncomment the following lines to generate SSL-Certificates:
+
+`wordpress-mass-manage/wordpress/docker-compose-template.yml`:
+```
+#- "traefik.http.routers.<#FULL_STACK_NAME>-secure.tls=true"
+#- "traefik.http.routers.<#FULL_STACK_NAME>-secure.tls.certresolver=letsencrypt"
+```
+`wordpress-mass-manage/traefik/docker-compose.yml`:
+```
+#- "traefik.http.routers.traefik-secure.tls=true"
+#- "traefik.http.routers.traefik-secure.tls.certresolver=letsencrypt"
+```
+4. start traefik 
 ```
 docker-compose up -d
 ```
-4. move back 
+5. move back 
 ```
 cd ..
 ```
-5. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file  (run `notepad %windir%\system32\drivers\etc\hosts` as admin). (keep in mind you have to add every subdomain to it you want to use)
+6. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file  (run `notepad %windir%\system32\drivers\etc\hosts` as admin). (keep in mind you have to add every subdomain to it you want to use)
  ```
  127.0.0.1 <your-domain.tld>
  127.0.0.1 traefik.<your-domain.tld>
  127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #(for example testing1.docker-test.net) repeat this for all subdomains
  ```
-6. executable to use: wordpress-mass-manage-win.exe
+7. executable to use: wordpress-mass-manage-win.exe
 
 ## MAC (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) 
@@ -68,21 +92,33 @@ docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker
 ```
 cd wordpress-mass-manage/traefik
 ``` 
-3. start traefik 
+3. (Public installation only, OPTIONAL) Uncomment the following lines to generate SSL-Certificates:
+
+`wordpress-mass-manage/wordpress/docker-compose-template.yml`:
+```
+#- "traefik.http.routers.<#FULL_STACK_NAME>-secure.tls=true"
+#- "traefik.http.routers.<#FULL_STACK_NAME>-secure.tls.certresolver=letsencrypt"
+```
+`wordpress-mass-manage/traefik/docker-compose.yml`:
+```
+#- "traefik.http.routers.traefik-secure.tls=true"
+#- "traefik.http.routers.traefik-secure.tls.certresolver=letsencrypt"
+```
+4. start traefik 
 ```
 docker-compose up -d
 ```
-4. move back 
+5. move back 
 ```
 cd ..
 ```
-5. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file. (keep in mind you have to add every subdomain to it you want to use)
+6. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file. (keep in mind you have to add every subdomain to it you want to use)
  ```
  127.0.0.1 <your-domain.tld>
  127.0.0.1 traefik.<your-domain.tld>
  127.0.0.1 <wordpress-subdomain>.<your-domain.tld> #(for example testing1.docker-test.net) repeat this for all subdomains
  ```
-6. executable to use: ./wordpress-mass-manage-macos
+7. executable to use: ./wordpress-mass-manage-macos
 
 ## updating the setup (if needed)
 ```
@@ -118,4 +154,3 @@ traeffik panel User: admin
 traeffik panel Password: admin
 
 change user and password in `traefik/data/configurations/dynamic.yml` under user-auth > basicAuth > users (generate with `https://hostingcanada.org/htpasswd-generator/` (use Bcrypt mode))
-
