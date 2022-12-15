@@ -19,6 +19,20 @@ function find_in_named(named_array, value, replacestr) {
     return false
 }
 
+
+function execSyncCatch(command, options) {
+    try {
+        return execSync(command,options);
+    } catch (error) {
+        if (error.status == 1) {
+            return ""
+        } else {
+            throw error;
+        }
+    }
+    
+}
+
 function deploy(stack_name, stack_subdomain) {
     var subdomain_list = JSON.parse(fs.readFileSync(conf.cwd + "/wordpress/subdomain_list.json",{encoding:'utf-8'}))
 
@@ -47,13 +61,13 @@ function deploy(stack_name, stack_subdomain) {
     fs.writeFileSync(stack_dir + "/docker-compose.yml",template );
 
     if ((process.platform == "linux" || process.platform == "darwin")
-     && execSync("docker image ls | grep -E 'mysql.*5\.7|wordpress'",{cwd:stack_dir}).toString().split("\n").length < 3) {
+     && execSyncCatch("docker image ls | grep -E 'mysql.*5\.7|wordpress'",{cwd:stack_dir}).toString().split("\n").length < 3) {
         console.log(chalk.cyan("Pulling images..."))
         execSync("docker-compose pull",{cwd:stack_dir})
         console.log(chalk.green("All images pulled"))
     } else if (process.platform == "win32"
-     && !execSync("docker image ls | findstr /R \"mysql.*5\.7\"",{cwd:stack_dir}).toString().includes("mysql")
-     && !execSync("docker image ls | findstr /R \"wordpress\"",{cwd:stack_dir}).toString().includes("wordpress")) {
+     && !execSyncCatch("docker image ls | findstr /R \"mysql.*5\.7\"",{cwd:stack_dir}).toString().includes("mysql")
+     && !execSyncCatch("docker image ls | findstr /R \"wordpress\"",{cwd:stack_dir}).toString().includes("wordpress")) {
 
         console.log(chalk.cyan("Pulling images..."))
         execSync("docker pull wordpress",{cwd:stack_dir})
