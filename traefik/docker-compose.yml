@@ -9,7 +9,7 @@ services:
     security_opt:
       - no-new-privileges:true
     ports:
-      # - 80:80
+      - 80:80
       - 443:443
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -27,6 +27,8 @@ services:
       - "traefik.http.routers.traefik-secure.rule=Host(`traefik.docker-test.net`)"
       - "traefik.http.routers.traefik-secure.service=api@internal"
       - "traefik.http.routers.traefik-secure.middlewares=user-auth@file"
+      #- "traefik.http.routers.traefik-secure.tls=true"
+      #- "traefik.http.routers.traefik-secure.tls.certresolver=letsencrypt"
 
 networks:
   proxy:

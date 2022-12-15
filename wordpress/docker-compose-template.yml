@@ -36,7 +36,9 @@ services:
       - "traefik.enable=true"
       - "traefik.docker.network=traefik_proxy"
       - "traefik.http.routers.<#FULL_STACK_NAME>-secure.entrypoints=https"
-      - "traefik.http.routers.<#FULL_STACK_NAME>-secure.rule=Host(`<#TRAEFIK_HOST>`)" 
+      - "traefik.http.routers.<#FULL_STACK_NAME>-secure.rule=Host(`<#TRAEFIK_HOST>`)"
+      #- "traefik.http.routers.<#FULL_STACK_NAME>-secure.tls=true"
+      #- "traefik.http.routers.<#FULL_STACK_NAME>-secure.tls.certresolver=letsencrypt"
 
 networks:
   # intern:
