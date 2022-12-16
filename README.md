@@ -10,11 +10,11 @@
 
 ## Linux (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) 
-```
+```bash
 docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main
 ```
 2. change directory into wordpress-mass-manage 
-```
+```bash
 cd wordpress-mass-manage/traefik
 ```
 3. (Public installation only, OPTIONAL) Uncomment the following lines to generate SSL-Certificates:
@@ -30,14 +30,14 @@ cd wordpress-mass-manage/traefik
 #- "traefik.http.routers.traefik-secure.tls.certresolver=letsencrypt"
 ```
 4. start traefik 
-```
+```bash
 docker-compose up -d
 ```
 5. move back 
-```
+```bash
 cd ..
 ```
-6. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file  (run `notepad %windir%\system32\drivers\etc\hosts` as admin). (keep in mind you have to add every subdomain to it you want to use)
+6. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file  (run `nano /etc/hosts` as admin). (keep in mind you have to add every subdomain to it you want to use)
  ```
  127.0.0.1 <your-domain.tld>
  127.0.0.1 traefik.<your-domain.tld>
@@ -48,11 +48,11 @@ cd ..
 
 ## Windows (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) 
-```
+```bash
 docker run --rm -v &cd&/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main
 ```
 2. change directory into wordpress-mass-manage 
-```
+```bash
 cd wordpress-mass-manage/traefik
 ``` 
 3. (Public installation only, OPTIONAL) Uncomment the following lines to generate SSL-Certificates:
@@ -68,11 +68,11 @@ cd wordpress-mass-manage/traefik
 #- "traefik.http.routers.traefik-secure.tls.certresolver=letsencrypt"
 ```
 4. start traefik 
-```
+```bash
 docker-compose up -d
 ```
 5. move back 
-```
+```bash
 cd ..
 ```
 6. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file  (run `notepad %windir%\system32\drivers\etc\hosts` as admin). (keep in mind you have to add every subdomain to it you want to use)
@@ -85,11 +85,11 @@ cd ..
 
 ## MAC (x86_64)
 1. run following command after replacing docker-test.net with your own domain (<your-domain.tld>) 
-```
+```bash
 docker run --rm -v $(pwd)/wordpress-mass-manage/:/workspace -e wmm_domain=docker-test.net ghcr.io/fuchsi2/wmm_setup:main
 ```
 2. change directory into wordpress-mass-manage 
-```
+```bash
 cd wordpress-mass-manage/traefik
 ``` 
 3. (Public installation only, OPTIONAL) Uncomment the following lines to generate SSL-Certificates:
@@ -105,11 +105,11 @@ cd wordpress-mass-manage/traefik
 #- "traefik.http.routers.traefik-secure.tls.certresolver=letsencrypt"
 ```
 4. start traefik 
-```
+```bash
 docker-compose up -d
 ```
 5. move back 
-```
+```bash
 cd ..
 ```
 6. (Local installation only) add <your-domain.tld>, traefik.<your-domain.tld> and any other sub domain (for wordpress) you want to use to the bottom of the hosts file. (keep in mind you have to add every subdomain to it you want to use)
