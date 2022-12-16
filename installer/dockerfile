@@ -20,7 +20,7 @@ COPY ./installer/run.sh .
 
 ENV wmm_domain docker-test.net
 
-CMD [ "bash",  "./run.sh" ]
+ENTRYPOINT [ "bash",  "./run.sh" ]
 
 # docker build . -f installer/dockerfile -t wmm-install:latest --no-cache
 
