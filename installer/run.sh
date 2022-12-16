@@ -13,5 +13,16 @@ echo "running build"
 rm /install/build/*
 npm run build
 cp /install/build/* /workspace/
-cp -r /workspace_/* /workspace/
-sed -i 's/docker-test.net/'$wmm_domain'/g' /workspace/traefik/docker-compose.yml
+
+while getopts 'x' OPTION; do
+    case $OPTION in
+        x)
+            echo "only updating executable!"
+            ;;
+        *) 
+            cp -r /workspace_/* /workspace/
+            sed -i 's/docker-test.net/'$wmm_domain'/g' /workspace/traefik/docker-compose.yml
+            ;;
+    esac
+    
+done
