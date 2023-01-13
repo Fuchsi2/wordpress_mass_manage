@@ -14,6 +14,8 @@ rm /install/build/*
 npm run build
 cp /install/build/* /workspace/
 
+echo "Using Domain: $wmm_domain"
+
 while getopts 'x' OPTION; do
     case $OPTION in
         x)
